@@ -1,23 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Header from './components/Header';
+import Allgrids from './components/Allgrids';
+import Bottom from './components/Bottom';
+import {useState} from 'react';
 function App() {
+  let screenConfig = useState(0);
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+<Header />
+{screenConfig[0]==0?<h1 style={{color:'Brown'}}>Covid-19 Global Information</h1>:<h1 style={{color:'Brown'}}>Covid-19 Country Information</h1>}
+<Allgrids currentScreen={screenConfig[0]}/>
+<Bottom screenConfig={screenConfig}/>
     </div>
   );
 }
